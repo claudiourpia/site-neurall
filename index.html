@@ -1,4 +1,7 @@
 <title>Neurall Consultoria</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Neurall Consultoria: posicionamento além do digital para médicos, consultores financeiros e educadores.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -293,13 +296,22 @@ button{font:inherit;color:inherit}
 
 /* ---------- 12. CTA com QR ---------- */
 .get{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding:120px max(24px,env(safe-area-inset-right,0px)) 80px max(24px,env(safe-area-inset-left,0px));background:linear-gradient(180deg,var(--bg) 0%,#E6F1EE 100%)}
-.get-copy{display:grid;justify-items:center;gap:26px;text-align:center}
+.get-copy{display:grid;justify-items:start;gap:26px;text-align:left}
 .get-copy h2{font-size:clamp(2rem,3.6vw,3rem)}
-.get-copy .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.qr-card{justify-self:center;width:min(300px,70vw);aspect-ratio:1;background:#fff;border-radius:34px;padding:26px;box-shadow:0 60px 80px -40px rgba(24,49,104,.45),0 0 0 1px var(--line);transform:rotate(-6deg);transition:transform .3s}
+.get-copy .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-start}
+.qr-card{justify-self:center;width:min(300px,70vw);aspect-ratio:1;background:#fff;border-radius:34px;padding:26px;box-shadow:0 60px 80px -40px rgba(24,49,104,.45),0 0 0 1px var(--line)}
 .qr-card #qr{width:100%;height:100%;display:grid;place-items:center}
 .qr-card img,.qr-card canvas{width:100%!important;height:auto!important}
 .qr-note{font-size:.78rem;color:var(--mute)}
+.get-form{display:grid;gap:10px;width:min(460px,100%);text-align:left;margin-top:6px}
+.get-form .ff-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.get-form input,.get-form textarea{width:100%;font:inherit;font-size:.92rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 16px;outline:none;transition:border-color .2s,box-shadow .2s}
+.get-form textarea{resize:vertical;min-height:84px}
+.get-form input::placeholder,.get-form textarea::placeholder{color:#9aa6bd}
+.get-form input:focus,.get-form textarea:focus{border-color:#8aa0cf;box-shadow:0 0 0 3px rgba(24,49,104,.1)}
+.get-form button{margin-top:4px;height:52px;border:0;cursor:pointer;border-radius:999px;background:var(--night);color:#fff;font:inherit;font-weight:600;font-size:.95rem;box-shadow:0 12px 26px -12px rgba(24,49,104,.55);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.get-form button:hover{transform:translateY(-2px);box-shadow:0 18px 34px -14px rgba(24,49,104,.6)}
+@media (max-width:480px){.get-form .ff-row{grid-template-columns:1fr}}
 @media (max-width:820px){.get{grid-template-columns:1fr}}
 .notes{padding:30px 28px;font-size:.72rem;color:var(--mute);display:grid;gap:4px;background:#E6F1EE}
 footer{background:var(--night);color:#AFBDD8;border-radius:var(--r) var(--r) 0 0;padding:70px max(28px,env(safe-area-inset-right,0px)) 50px max(28px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;font-size:.88rem}
@@ -478,6 +490,18 @@ footer .cols{display:flex;gap:60px;flex-wrap:wrap}
       <h2 class="blurtext">Comece pelo diagnóstico gratuito.</h2>
       <div class="row"><a class="pill" href="https://neurallconsultoria.com.br">Agendar agora</a><a class="pill" href="https://wa.me/5571981542176" target="_blank" rel="noopener">WhatsApp (71) 98154-2176</a></div>
       <span class="qr-note">Aponte a câmera para o código e fale com a equipe.</span>
+      <form class="get-form" id="leadForm">
+        <div class="ff-row">
+          <input type="text" id="lfNome" placeholder="Seu nome" required>
+          <input type="text" id="lfContato" placeholder="WhatsApp ou e-mail" required>
+        </div>
+        <div class="ff-row">
+          <input type="text" id="lfArea" placeholder="Área de atuação">
+          <input type="text" id="lfInsta" placeholder="Seu Instagram (@)">
+        </div>
+        <textarea id="lfMsg" placeholder="Conte rapidamente seu objetivo" rows="3"></textarea>
+        <button type="submit">Quero meu diagnóstico gratuito</button>
+      </form>
     </div>
     <div class="qr-card" id="qrCard"><div id="qr"></div></div>
   </section>
@@ -608,9 +632,6 @@ footer .cols{display:flex;gap:60px;flex-wrap:wrap}
 
   // QR para o site
   try{ new QRCode($('#qr'),{text:'https://wa.me/5571981542176',width:240,height:240,colorDark:'#183168',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M}); }catch(e){ $('#qr').textContent='wa.me/5571981542176'; }
-  var qc=$('#qrCard');
-  qc.addEventListener('pointermove',function(e){var r=qc.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;qc.style.transform='rotate(-6deg) perspective(700px) rotateY('+(x*16)+'deg) rotateX('+(-y*16)+'deg)'});
-  qc.addEventListener('pointerleave',function(){qc.style.transform='rotate(-6deg)'});
 
   // Divide manchetes em palavras para o desfoque
   $$('.blurtext').forEach(function(el){
@@ -627,6 +648,18 @@ footer .cols{display:flex;gap:60px;flex-wrap:wrap}
     var vio=new IntersectionObserver(function(es){es.forEach(function(en){var v=en.target;if(en.isIntersecting){var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause&&v.pause();}})},{threshold:.12});
     $$('video').forEach(function(v){vio.observe(v);});
   }
+
+  // Formulário: envia os dados pré-preenchidos pelo WhatsApp
+  var lf=document.getElementById('leadForm');
+  if(lf){lf.addEventListener('submit',function(e){
+    e.preventDefault();
+    var g=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
+    var t='Olá! Quero meu diagnóstico gratuito.\n\nNome: '+g('lfNome')+'\nContato: '+g('lfContato');
+    if(g('lfArea'))t+='\nÁrea: '+g('lfArea');
+    if(g('lfInsta'))t+='\nInstagram: '+g('lfInsta');
+    if(g('lfMsg'))t+='\nObjetivo: '+g('lfMsg');
+    window.open('https://wa.me/5571981542176?text='+encodeURIComponent(t),'_blank');
+  });}
 
   if(reduce||!window.gsap) return;
   gsap.registerPlugin(ScrollTrigger);
