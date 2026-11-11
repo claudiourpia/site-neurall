@@ -697,8 +697,8 @@ footer .cols{display:flex;gap:60px;flex-wrap:wrap}
   }
 
   /* 6. Telefone gira de lado para frente */
-  gsap.fromTo('#spin',{rotateX:42,rotateZ:-20,rotateY:-13,scale:1.18},{rotateX:22,rotateZ:-11,rotateY:-7,scale:1,ease:'none',scrollTrigger:{trigger:'.split',start:'top top',end:'center 45%',scrub:1}});
-  gsap.to('#spin',{rotateX:17,rotateZ:-8,y:-12,ease:'none',scrollTrigger:{trigger:'.split',start:'center 45%',end:'bottom bottom',scrub:1}});
+  gsap.fromTo('#spin',{rotateX:30,rotateZ:-15,rotateY:-11,scale:1.12},{rotateX:9,rotateZ:-4,rotateY:-3,scale:1,ease:'power1.out',scrollTrigger:{trigger:'.split',start:'top top',end:'center 50%',scrub:1}});
+  gsap.to('#spin',{rotateX:5,rotateZ:-2,y:-10,ease:'none',scrollTrigger:{trigger:'.split',start:'center 50%',end:'bottom bottom',scrub:1}});
 
   /* Oráculo: balão alterna entre as frases, como uma conversa */
   (function(){
