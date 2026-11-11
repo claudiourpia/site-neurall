@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Neurall Consultoria</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Neurall Consultoria: posicionamento além do digital para médicos, consultores financeiros e educadores.">
@@ -145,7 +144,7 @@ button{font:inherit;color:inherit}
 .talk-phone{width:min(380px,72vw);transform-origin:50% 58%;transform-style:preserve-3d}
 .talk-phone .phone{width:100%}
 .talk-phone #talkScreenVideo{object-fit:contain;z-index:1}
-.talk-phone .scr-blur{position:absolute;inset:-8%;z-index:0;background:url(seg2_poster.jpg) center/cover;filter:blur(18px) saturate(1.1) brightness(.96);transform:scale(1.12)}
+.talk-phone .scr-blur{position:absolute;inset:-8%;z-index:0;background:url(cel3_poster.jpg) center/cover;filter:blur(18px) saturate(1.1) brightness(.96);transform:scale(1.12)}
 .spin .scr-video{object-fit:cover;z-index:1}
 .talk .big{font-family:var(--body);font-size:clamp(1.3rem,2.3vw,1.85rem);line-height:1.22;letter-spacing:-.02em;font-weight:400}
 .talk .big b{font-weight:600}
@@ -361,7 +360,7 @@ footer .cols{display:flex;gap:60px;flex-wrap:wrap}
           <div class="phone"><div class="screen">
             <div class="scr-blur"></div>
             <div class="island"></div>
-            <video class="scr-video" id="talkScreenVideo" autoplay muted loop playsinline preload="auto" poster="seg2_poster.jpg"><source src="seg2.webm" type="video/webm"><source src="seg2.mp4" type="video/mp4"></video>
+            <video class="scr-video" id="talkScreenVideo" autoplay muted loop playsinline preload="auto" poster="cel3_poster.jpg"><source src="cel3.webm" type="video/webm"><source src="cel3.mp4" type="video/mp4"></video>
           </div></div>
         </div>
       </div>
@@ -692,7 +691,7 @@ footer .cols{display:flex;gap:60px;flex-wrap:wrap}
     var vtl=gsap.timeline({repeat:-1,paused:true});
     vlines.forEach(function(el){
       vtl.to(el,{opacity:1,y:0,duration:.8,ease:'power2.out'})
-         .to(el,{opacity:0,y:-22,duration:.8,ease:'power2.in'},'+=5');
+         .to(el,{opacity:0,y:-22,duration:.8,ease:'power2.in'},'+=3');
     });
     ScrollTrigger.create({trigger:'#app',start:'top 60%',end:'bottom 40%',onToggle:function(s){s.isActive?vtl.play():vtl.pause();}});
   }
@@ -722,5 +721,3 @@ footer .cols{display:flex;gap:60px;flex-wrap:wrap}
   $$('.feat-media').forEach(function(c){gsap.fromTo(c,{scale:.95},{scale:1,ease:'none',scrollTrigger:{trigger:c,start:'top bottom',end:'top 25%',scrub:true}})});
 })();
 </script>
-
-</body></html>
