@@ -474,7 +474,7 @@ footer .cols{display:flex;gap:60px;flex-wrap:wrap}
 
   <!-- 11. Vídeos -->
   <section class="vids" data-nav="light">
-    <a class="vid" href="#contato"><div class="vid-media a"><video autoplay muted loop playsinline preload="auto" poster="trab_poster.jpg"><source src="trab.mp4" type="video/mp4"></video></div><div class="vid-cap"><b>Como a Neurall trabalha</b><span>Por dentro do método, em poucos minutos</span></div></a>
+    <div class="vid"><div class="vid-media a"><video controls playsinline preload="metadata" poster="trab_poster.jpg" data-manual><source src="trab.mp4" type="video/mp4"></video></div><div class="vid-cap"><b>Como a Neurall trabalha</b><span>Por dentro do método, em poucos minutos</span></div></div>
   </section>
 
   <!-- 12. FAQ -->
@@ -646,7 +646,7 @@ footer .cols{display:flex;gap:60px;flex-wrap:wrap}
   // Mobile: toca apenas os vídeos visíveis (evita sobrecarga de decodificação)
   if('IntersectionObserver' in window){
     var vio=new IntersectionObserver(function(es){es.forEach(function(en){var v=en.target;if(en.isIntersecting){var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause&&v.pause();}})},{threshold:.12});
-    $$('video').forEach(function(v){vio.observe(v);});
+    $$('video').forEach(function(v){if(!v.hasAttribute('data-manual'))vio.observe(v);});
   }
 
   // Formulário: envia os dados pré-preenchidos pelo WhatsApp
